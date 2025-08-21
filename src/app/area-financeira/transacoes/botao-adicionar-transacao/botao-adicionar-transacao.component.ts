@@ -1,4 +1,4 @@
-import { Component, viewChild } from '@angular/core';
+import { Component, ElementRef, viewChild } from '@angular/core';
 import { BotaoComponent } from '../../../compartilhados/botao/botao.component';
 
 @Component({
@@ -8,9 +8,9 @@ import { BotaoComponent } from '../../../compartilhados/botao/botao.component';
   styleUrl: './botao-adicionar-transacao.component.css',
 })
 export class BotaoAdicionarTransacaoComponent {
-  modal = viewChild('modal');
+  modal = viewChild.required<ElementRef<HTMLDialogElement>>('modal');
 
   abrirModal() {
-    console.log(this.modal());
+    this.modal().nativeElement.showModal();
   }
 }
