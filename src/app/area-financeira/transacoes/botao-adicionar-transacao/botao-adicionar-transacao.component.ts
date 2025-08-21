@@ -1,6 +1,6 @@
-import { Component, ElementRef, viewChild } from '@angular/core';
+import { Component, signal, effect } from '@angular/core';
 import { BotaoComponent } from '../../../compartilhados/botao/botao.component';
-import { ModalComponent } from "../../../compartilhados/modal/modal.component";
+import { ModalComponent } from '../../../compartilhados/modal/modal.component';
 
 @Component({
   selector: 'app-botao-adicionar-transacao',
@@ -9,8 +9,9 @@ import { ModalComponent } from "../../../compartilhados/modal/modal.component";
   styleUrl: './botao-adicionar-transacao.component.css',
 })
 export class BotaoAdicionarTransacaoComponent {
+  modalAberto = signal(false);
 
   abrirModal() {
-
+    this.modalAberto.set(true);
   }
 }
