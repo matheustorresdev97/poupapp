@@ -57,22 +57,14 @@ export class AreaFinanceiraComponent {
     },
   ]);
 
-  contas: Conta[] = [
-    {
-      nome: 'Anybank',
-      saldo: 1000,
-    },
-    {
-      nome: 'Bytebank',
-      saldo: 0,
-    },
-    {
-      nome: 'Switch Bank',
-      saldo: 0,
-    },
-  ];
+  contas = signal<Conta[]>([]);
+
 
   processarTransacao(transacao: Transacao) {
     this.transacoes.update((transacoes) => [transacao, ...transacoes]);
+  }
+
+  adicionarConta(conta: Conta) {
+    this.contas.update((contas) => [...contas, conta]);
   }
 }

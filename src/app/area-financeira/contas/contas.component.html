@@ -12,7 +12,7 @@
       }
     </ul>
 
-    <app-botao-adicionar-conta class="botao-adicionar-conta" />
+    <app-botao-adicionar-conta class="botao-adicionar-conta" (contaCriada)="contaCriada.emit($event)" />
 
   </div>
 </app-card>

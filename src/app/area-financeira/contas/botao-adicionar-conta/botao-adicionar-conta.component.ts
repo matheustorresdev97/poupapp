@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, output, signal } from '@angular/core';
 import { BotaoComponent } from "../../../compartilhados/botao/botao.component";
 import { ModalComponent } from "../../../compartilhados/modal/modal.component";
 import { FormsModule } from '@angular/forms';
+import { Conta } from '../../compartilhados/conta.model';
 
 @Component({
   selector: 'app-botao-adicionar-conta',
@@ -17,10 +18,18 @@ export class BotaoAdicionarContaComponent {
     saldoInicial: '',
   }
 
+  contaCriada = output<Conta>();
+
+
   abrirModal() {
     this.modalAberto.set(true);
   }
   aoSubmeter() {
-    console.log(this.novaContaForm);
+    const novaConta = new Conta(
+      this.novaContaForm.nome,
+      Number(this.novaContaForm.saldoInicial)
+    );
+    this.contaCriada.emit(novaConta);
+    this.modalAberto.set(false);
   }
 }
