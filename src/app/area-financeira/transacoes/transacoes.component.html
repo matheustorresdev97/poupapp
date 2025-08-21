@@ -11,6 +11,7 @@
       <li aria-hidden="true">Ainda não há transações.</li>
       }
     </ul>
-    <app-botao-adicionar-transacao class="botao-adicionar-transacao" (transacaoCriada)="transacaoCriada.emit($event)" />
+    <app-botao-adicionar-transacao class="botao-adicionar-transacao" (transacaoCriada)="transacaoCriada.emit($event)"
+      [contas]="contas()" />
   </div>
 </app-card>
